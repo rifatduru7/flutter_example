@@ -22,6 +22,7 @@ class CitySelectorWidget extends StatefulWidget {
 
 class CitySelectorState extends State<CitySelectorWidget> {
   var cities = ["Ankara", "İstanbul", "Antalya", "Eskişehir", "Trabzon"];
+  var selectedCity = "Ankara";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,9 +39,15 @@ class CitySelectorState extends State<CitySelectorWidget> {
                   child: Text(value),
                 );
               }).toList(),
-              value: "İstanbul",
-              onChanged: (String value) {},
-            )
+              value: selectedCity,
+              onChanged: (String value) {
+                setState(() {
+                  selectedCity = value;
+                });
+                this.selectedCity = value;
+              },
+            ),
+            Text("Şu anda seçtiğiniz şehir :"+selectedCity)
           ],
         ),
       ),
